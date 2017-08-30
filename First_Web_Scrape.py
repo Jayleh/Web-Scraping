@@ -23,11 +23,9 @@ containers = page_soup.findAll("div", {"class":"item-container"})
 Here, I would have continue writing code to put the info in an csv file if it
 weren't for the 'Robot' check. Here is what I would write tho:
 
-f = open("graphics_cards.csv", "w")
-
-headers = "brand, product_name, shipping\n"
-
-f.write(headers)
+with open("graphics_cards.csv", "w") as f:
+	headers = "brand, product_name, shipping\n"
+	f.write(headers)
 '''
 
 for container in containers:
@@ -40,14 +38,11 @@ for container in containers:
 	
 	shipping_container = container.findAll("li", {"class":"price-ship"})
 	shipping = shipping_container[0].text.strip()
-
 	print("brand: " + brand)
 	print("product_name: " + product_name)
 	print("shipping: " + shipping)
 
 	#f.write(brand + "," + product_name.replace(",", "|") + shipping + "\n")
-
-#f.close()
 
 '''
 I had trouble printing out the brand name. It printed them out, however, I had a
