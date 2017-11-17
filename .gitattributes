@@ -1,2 +1,4 @@
-special-vendored-path/* linguist-vendored
-Python linguist-vendored=false
+src/main/resources/static/* linguist-vendored
+project-docs/* linguist-documentation
+*.py linguist-language=Python
+*.html linguist-language=
