@@ -26,21 +26,22 @@ with open("graphics_cards.csv", "w") as f:
     headers = "brand, product_name, shipping\n"
     f.write(headers)
 
-for container in containers:
-    # AttributeError of 'NoneType' here, fixed with try/except
-    try:
-        brand = container.div.div.a.img["title"]
-    except AttributeError:
-        pass
+    for container in containers:
+        # AttributeError of 'NoneType' here, fixed with try/except
+        try:
+            brand = container.div.div.a.img["title"]
+        except AttributeError:
+            pass
 
-    title_container = container.findAll("a", {"class": "item-title"})
-    product_name = title_container[0].text
+        title_container = container.findAll("a", {"class": "item-title"})
+        product_name = title_container[0].text
 
-    shipping_container = container.findAll("li", {"class": "price-ship"})
-    shipping = shipping_container[0].text.strip()
+        shipping_container = container.findAll("li", {"class": "price-ship"})
+        shipping = shipping_container[0].text.strip()
 
-    print("brand: " + str(brand))
-    print("product_name: " + product_name)
-    print("shipping: " + shipping)
+        print("brand: " + str(brand))
+        print("product_name: " + product_name)
+        print("shipping: " + shipping)
 
-    f.write(brand.replace(",", "") + "," + product_name.replace(",", "|") + "," + shipping + "\n")
+        f.write(brand.replace(",", "") + "," + product_name.replace(",", "|") +
+                "," + shipping + "\n")
